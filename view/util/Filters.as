@@ -1,8 +1,13 @@
 package view.util 
 {
 	import fl.motion.Color;
+	import flash.display.Sprite;
 	import flash.filters.DropShadowFilter;
 	import flash.filters.GlowFilter;
+	import flash.display.Sprite;  
+    import flash.display.GradientType;  
+    import flash.geom.Matrix;  
+	
 	public class Filters 
 	{
 		
@@ -11,7 +16,7 @@ package view.util
 			
 		}
 		
-		//Button filters
+		//General filters
 		
 		
 		//{ region Text filters

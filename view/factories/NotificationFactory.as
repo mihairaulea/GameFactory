@@ -1,7 +1,9 @@
 package view.factories 
 {
+	import flash.display.ShaderParameter;
 	import flash.display.Shape;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.text.*;
 	import flash.filters.DropShadowFilter;
 	import flash.filters.GlowFilter;
@@ -25,6 +27,24 @@ package view.factories
 			roundRect.graphics.drawRoundRect(0, 0, syzeX, syzeY, 10, 10);
 			roundRect.graphics.endFill();
 
+			sprite.addChild(roundRect);
+			return sprite;
+		}
+		
+		//de testat
+		public function createTmplGradient(syzeX:int, syzeY:int):Sprite
+		{
+			var sprite:Sprite = new Sprite();
+			
+			var roundRect:Shape = new Shape();
+			var matrix:Matrix = new Matrix();
+			matrix.createGradientBox(syzeX, syzeY, 0, 0, 0);
+
+			roundRect.graphics.lineStyle(0, 0x000000, 0);
+			roundRect.graphics.beginGradientFill(GradientType.LINEAR, [0x000000, 0xFFFFFF], [1, 1], [0, 255], matrix);
+			roundRect.graphics.drawRoundRect(0, 0, syzeX, syzeY, 10, 10);
+			roundRect.graphics.endFill();
+			
 			sprite.addChild(roundRect);
 			return sprite;
 		}
