@@ -11,21 +11,23 @@ package
 	
 	public class Main extends MovieClip
 	{
-		var viewInst:CustomInterface = new CustomInterface();
+		var viewInst:View = new View();//CustomInterface = new CustomInterface();
 		var currWidth:int = 800;
 		var currHeight:int = 480;
 		
 		public function Main()
 		{
 			loaderInfo.addEventListener(Event.COMPLETE, onCompleteInfo);
-			setView();
+			trace("main!");
 		}
 		
 		private function onCompleteInfo(e:Event)
 		{
-			stage.addEventListener(Event.RESIZE, resizeHandler);
+			trace("complete");
 			currWidth = loaderInfo.height;
 			currHeight = loaderInfo.width;
+			setView();
+			stage.addEventListener(Event.RESIZE, resizeHandler);
 		}
 		
 		private function resizeHandler(e:Event)
@@ -38,7 +40,8 @@ package
 		private function setView()
 		{
 			addChild(viewInst);
-			viewInst.addEventListener(CustomInterface.BUTTON_TRIGGER, buttonTriggerHandler);
+			viewInst.initView();
+			//viewInst.addEventListener(CustomInterface.BUTTON_TRIGGER, buttonTriggerHandler);
 			
 			//viewInst.addNotif("Notification disabled", 50, 200, 150, 35, false);
 			//viewInst.removeNotif(viewInst.notifArray[1]);
@@ -46,9 +49,9 @@ package
 			//viewInst.addBtn(1, "help" , 300, 300);
 			//viewInst.removeBtn(viewInst.buttonArray[1]);
 			
-			viewInst.addBtn(0, "Play" , currWidth / 2, currHeight / 2, Filters.addOutline(0x4A8109));
-			viewInst.addNotif("Player: Guest", currWidth /2, currHeight/2, 200, 200, true, null, Filters.addShadow(0x62227F));
-			viewInst.addBackground(800, 480);		
+			//viewInst.addBtn(0, "Play" , currWidth / 2, currHeight / 2, Filters.addOutline(0x4A8109));
+			//viewInst.addNotif("Player: Guest", currWidth /2, currHeight/2, 200, 200, true, null, Filters.addShadow(0x62227F));
+			//viewInst.addBackground(800, 480);		
 		}
 		
 		private function buttonTriggerHandler(e:Event)
