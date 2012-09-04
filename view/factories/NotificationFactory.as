@@ -1,12 +1,9 @@
 package view.factories 
 {
-	import flash.display.ShaderParameter;
-	import flash.display.Shape;
-	import flash.display.Sprite;
+	import flash.display.*;
 	import flash.geom.Matrix;
 	import flash.text.*;
-	import flash.filters.DropShadowFilter;
-	import flash.filters.GlowFilter;
+	import flash.filters.*;
 
 	
 	public class NotificationFactory extends AbFactory
