@@ -18,11 +18,11 @@ package
 		public function Main()
 		{
 			loaderInfo.addEventListener(Event.COMPLETE, onCompleteInfo);
-			setView();
 		}
 		
 		private function onCompleteInfo(e:Event)
 		{
+			setView();
 			stage.addEventListener(Event.RESIZE, resizeHandler);
 			currWidth = loaderInfo.height;
 			currHeight = loaderInfo.width;
