@@ -1,4 +1,4 @@
-package view 
+﻿package view 
 {
 	import flash.display.*;
 	import flash.events.Event;
@@ -11,8 +11,6 @@ package view
 		public var buttonArray:Array = new Array();
 		public var notifArray:Array = new Array();
 		
-		private var firstScreen:FirstScreen = new FirstScreen();
-		private var backgroundDisplay:BackgroundDisplay = new BackgroundDisplay();
 		
 		//Mod: web - 0 /mobile portrait - 1 /mobile landscape - 2 
 		var deviceMode:int = 0;
@@ -27,11 +25,11 @@ package view
 		
 		public function init()
 		{
-			firstScreen.init();
+			
 		}
 		
 		//{ region Buttons
-		public function addBtn(tmpl:int = 0, param:String = "menu", posX:int = 0, posY:int = 0, glow:GlowFilter = null, shadow:DropShadowFilter = null)
+		public function addBtn(tmpl:int = 0, param:String = "menu", posX:int = 0, posY:int = 0, glow:GlowFilter = null, shadow:DropShadowFilter = null, functionClosure:Function = null)
 		{
 			var button:ButtonDisplay = new ButtonDisplay();
 			button.init(tmpl, param, glow, shadow);
@@ -40,7 +38,7 @@ package view
 			button.x = posX;
 			button.y = posY;
 			
-			button.addEventListener(ButtonDisplay.BUTTON_CLICK, clickBtnHandler);
+			button.addEventListener(ButtonDisplay.BUTTON_CLICK, functionClosure);
 			addChild(button);
 			setChildIndex(button, numChildren -1);
 		}
@@ -100,20 +98,6 @@ package view
 		
 		//} endregion
 
-		//{ region Backgrounds
-		
-		public function addBackground(w:int, h:int)
-		{
-			backgroundDisplay.addBackground(w, h);
-			addChildAt(backgroundDisplay, 0);
-		}
-		
-		//} endregion
-		
-		public function resizeElements(w:int, h:int)
-		{
-			backgroundDisplay.resize(w, h);
-		}
 	}
 
 }
