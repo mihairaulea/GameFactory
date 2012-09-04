@@ -5,7 +5,7 @@ package view
 	public class BackgroundDisplay extends Sprite
 	{
 		public var backgroundsArray:Array = new Array();
-		private var sprite:Sprite = new Sprite();
+		private var test:Sprite = new Sprite();
 		
 		public function BackgroundDisplay() 
 		{
@@ -17,19 +17,19 @@ package view
 			var backgroundBM:Bitmap = new Bitmap(new background());
 			backgroundBM.x = -backgroundBM.width / 2;
 			backgroundBM.y = -backgroundBM.height / 2;
-			sprite.addChild(backgroundBM);
+			test.addChild(backgroundBM);
 						
-			sprite.x = w/2;
-			sprite.y = h/2;
+			test.x = w/2;
+			test.y = h/2;
 			
-			backgroundsArray.push(sprite);
-			addChild(sprite);
+			backgroundsArray.push(test);
+			addChild(test);
 		}
 		
 		public function resize(w:int, h:int)
 		{
-			sprite.width = w;
-			sprite.height = h;
+			test.width = w;
+			test.height = h;
 			
 		}
 		

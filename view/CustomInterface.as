@@ -42,6 +42,7 @@ package view
 			
 			button.addEventListener(ButtonDisplay.BUTTON_CLICK, clickBtnHandler);
 			addChild(button);
+			setChildIndex(button, numChildren -1);
 		}
 		
 		public function removeBtn(button:ButtonDisplay)
@@ -81,6 +82,7 @@ package view
 			
 			notif.addEventListener(NotificationDisplay.NOTIF_CLICK, notifClickHandler);
 			addChild(notif);
+			setChildIndex(notif, numChildren -1);
 		}
 		
 		public function removeNotif(notif:NotificationDisplay)
@@ -103,7 +105,7 @@ package view
 		public function addBackground(w:int, h:int)
 		{
 			backgroundDisplay.addBackground(w, h);
-			addChild(backgroundDisplay);
+			addChildAt(backgroundDisplay, 0);
 		}
 		
 		//} endregion
