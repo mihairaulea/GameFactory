@@ -5,7 +5,7 @@ package view.screens
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import view.CustomInterface;
-	import view.LevelBrowserInterface;
+	import view.LevelBrowserDisplay;
 	import view.LevelSelDisplay;
 	import view.util.ContentRequester;
 	import view.BackgroundDisplay;
@@ -15,7 +15,7 @@ package view.screens
 		
 		private var levelBrowserInterface:CustomInterface = new CustomInterface();
 		private var backgroundDisplay:BackgroundDisplay = new BackgroundDisplay();
-		private var levelBrowserDisplay:LevelBrowserInterface = new LevelBrowserInterface();
+		private var levelBrowserDisplay:LevelBrowserDisplay = new LevelBrowserDisplay();
 		
 		private var hasBeenInit:Boolean = false;
 		
@@ -38,7 +38,7 @@ package view.screens
 			
 			
 			//LevelBrowser
-			levelBrowserDisplay.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
+			levelBrowserDisplay.addEventListener(LevelBrowserDisplay.LEVEL_SELECT, levelSelectHandler);
 			levelBrowserDisplay.init(90, 120);
 			
 			hasBeenInit = true;
@@ -51,7 +51,7 @@ package view.screens
 		{
 			backgroundDisplay.resize(sizeX, sizeY);
 			levelBrowserInterface.resize(sizeX, sizeY);
-			//levelBrowserDisplay.resize(sizeX, sizeY);
+			levelBrowserDisplay.resize(sizeX, sizeY);
 		}
 		
 		private function mainClick(e:Event)
@@ -67,7 +67,7 @@ package view.screens
 		
 		private function levelSelectHandler(e:Event)
 		{
-			trace("Level selected" + LevelBrowserInterface(e.target).selectedLevel);
+			trace("Level selected" + LevelBrowserDisplay(e.target).selectedLevel);
 		}
 	}
 

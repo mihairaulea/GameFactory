@@ -34,11 +34,15 @@ package view.util
 			contentArray[1] = levelBrowser;
 			contentArray[2] = game;
 			
+			for (var i:int = 0; i < contentArray.length; i++)
+			{
+				addChild(contentArray[i]);
+				contentArray[i].visible = false;
+			}
+			
 			contentPointer = firstScreen;
-			addChild(contentPointer);
+			contentPointer.visible = true;
 			contentPointer.init(new Object());
-			// fara pozitionari!
-			//.x .y
 		}
 		
 		private function setEventListeners()
@@ -54,9 +58,11 @@ package view.util
 		{
 			trace("new content requested!!!");
 			oldContentPointer = contentPointer;
-			removeChild(oldContentPointer);
+			//removeChild(oldContentPointer);
+			oldContentPointer.visible = false;
 			contentPointer = contentArray[ContentRequester(e.target).contentToRequestId];			
-			addChild(contentPointer);
+			//addChild(contentPointer);
+			contentPointer.visible = true;
 			contentPointer.init(ContentRequester(e.target).dataObject);
 		}
 		
