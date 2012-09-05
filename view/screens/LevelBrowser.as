@@ -1,8 +1,12 @@
 package view.screens 
 {
 	
+	import flash.display.Bitmap;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import view.CustomInterface;
+	import view.LevelBrowserInterface;
+	import view.LevelSelDisplay;
 	import view.util.ContentRequester;
 	import view.BackgroundDisplay;
 	
@@ -11,6 +15,7 @@ package view.screens
 		
 		private var levelBrowserInterface:CustomInterface = new CustomInterface();
 		private var backgroundDisplay:BackgroundDisplay = new BackgroundDisplay();
+		private var levelBrowserDisplay:LevelBrowserInterface = new LevelBrowserInterface();
 		
 		private var hasBeenInit:Boolean = false;
 		
@@ -23,27 +28,28 @@ package view.screens
 		{
 			if (hasBeenInit == false)
 			{
-			addChild(levelBrowserInterface);
 			addBackground();
+			addChild(levelBrowserInterface);
+			addChild(levelBrowserDisplay);
+			
+			
+			//Buttons
 			levelBrowserInterface.addBtn(3, "back", 26, 402, null, null, mainClick);
-			levelBrowserInterface.addBtn(2, "prev", 26, 233, null, null, prevClick);
-			levelBrowserInterface.addBtn(2, "next", 730, 233, null, null, nextClick);
+			
+			
+			//LevelBrowser
+			levelBrowserDisplay.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
+			levelBrowserDisplay.init(90, 120);
+			
+			hasBeenInit = true;
 			}
+			else
+				levelBrowserDisplay.reset();
 		}
 		
 		private function mainClick(e:Event)
 		{
 			super.requestContent(0, new Object());
-		}
-		
-		private function prevClick(e:Event)
-		{
-			
-		}
-		
-		private function nextClick(e:Event)
-		{
-			
 		}
 		
 		public function addBackground()
@@ -52,6 +58,10 @@ package view.screens
 			addChildAt(backgroundDisplay, 0);
 		}
 		
+		private function levelSelectHandler(e:Event)
+		{
+			trace("Level selected" + LevelBrowserInterface(e.target).selectedLevel);
+		}
 	}
 
 }

@@ -1,13 +1,15 @@
 package view 
 {
 	import flash.display.*;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.text.*;
 	
 	public class LevelSelDisplay extends Sprite
 	{
 		var sprite:Sprite = new Sprite();
-		
-		
+		public var levelNr:int = -1;
+				
 		public function LevelSelDisplay() 
 		{
 			
@@ -15,17 +17,22 @@ package view
 		
 		public function init(number:int, pic:Sprite)
 		{
-			addEventListener(MouseEvent.CLICK, clickHandler);
+			//addEventListener(MouseEvent.CLICK, clickHandler);
+			levelNr = number;
 			
 			var background:Bitmap = new Bitmap(new levelSelectBack());
 			sprite.addChild(background);
 			
+			pic.x = 5;
+			pic.y = 11;
 			sprite.addChild(pic);
 			
 			var levelNumber:Bitmap = new Bitmap(new levelSelectFront());
 			sprite.addChild(levelNumber);
 			
 			addNumber(number);
+			
+			addChild(sprite);
 		}
 		
 		private function addNumber(number:int)
@@ -47,13 +54,12 @@ package view
 			textField.multiline = false;
 			textField.selectable = false;
 			
+			textField.text = number.toString();
+			textField.x = sprite.width - textField.width - 9;
+			textField.y = 2;
 			sprite.addChild(textField);
 		}
 		
-		private function clickHandler(e:MouseEvent)
-		{
-			dispatchEvent(new Event(BUTTON_CLICK));
-		}
 	}
 
 }

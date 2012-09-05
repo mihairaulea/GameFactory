@@ -27,11 +27,17 @@ package view.screens
 			{
 				addBackground();
 				addChild(firstScreenInterface);
+				
+				//Buttons
 				firstScreenInterface.addBtn(0, "Play", 400, 240, Filters.addOutline(0x4A8109), null, levelBrowserClick);
 				firstScreenInterface.addBtn(1, "setup", 209, 381, null, null, setupClick); 
 				firstScreenInterface.addBtn(1, "menu", 312, 381, null, null, menuClick);
 				firstScreenInterface.addBtn(1, "help", 415, 381, null, null, helpClick);
 				firstScreenInterface.addBtn(1, "about", 518, 381, null, null, aboutClick);
+				
+				//Notif
+				firstScreenInterface.addNotif("Player1", 400, 310, 165, 40, false, null, Filters.addShadow(0x62227F));
+				
 				hasBeenInit = true;
 			}	
 		}
