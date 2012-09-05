@@ -60,7 +60,9 @@ package view.util
 			contentPointer.init(ContentRequester(e.target).dataObject);
 		}
 		
-		public function resize(width:Number, height:Number)
+		
+		
+		public function resize(syzeX:Number, syzeY:Number)
 		{
 			
 		}

@@ -51,7 +51,11 @@ package view
 			
 			addTmpl(tmpl);
 			if (tmpl == 0)
+			{
 				addText(param, glow, shadow);
+				tmplDisplay.x = -tmplDisplay.width / 2;
+				tmplDisplay.y = -tmplDisplay.height / 2;
+			}
 			else
 				addParam(param);
 		}
@@ -83,8 +87,8 @@ package view
 		private function addText(param:String, glow:GlowFilter, shadow:DropShadowFilter)
 		{
 			textField = buttonFactory.createText(param, glow, shadow);
-			textField.x = width / 2 - textField.width / 2;
-			textField.y = height / 2 - textField.height / 2;
+			textField.x = - textField.width / 2;
+			textField.y = - textField.height / 2;
 			
 			addChild(textField);
 		}

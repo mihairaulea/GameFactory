@@ -21,7 +21,7 @@ package view
 			addChild(contentManipulator);
 		}
 		
-		public function resizeElements(width:Number, height:Number)
+		public function resizeElements(syzeX:Number, syzeY:Number)
 		{
 			
 		}

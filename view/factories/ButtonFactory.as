@@ -13,6 +13,13 @@
 			
 		}
 		
+		
+		/* Templates:
+		 * 0 - generic text button
+		 * 1 - cicle green template
+		 * 2 - circle blue template
+		 * 3 - square green template
+		 */
 		public function createTmpl(type:int):Sprite
 		{
 			var sprite:Sprite = new Sprite();
@@ -27,6 +34,10 @@
 					sprite.addChild(tmplCircleBtn);
 					break;
 				case 2:
+					var tmplCicleBlueBtn:Bitmap = new Bitmap(new TemplateCircleBlueBtn());
+					sprite.addChild(tmplCicleBlueBtn);
+					break;
+				case 3:
 					var tmplSquareBtn:Bitmap = new Bitmap(new TemplateSquareBtn());
 					sprite.addChild(tmplSquareBtn);
 					break;
@@ -55,6 +66,18 @@
 				case "setup":
 					var setup:Bitmap = new Bitmap(new SetupBtn());
 					sprite.addChild(setup);
+					break;
+				case "back":
+					var back:Bitmap = new Bitmap(new BackBtn());
+					sprite.addChild(back);
+					break;
+				case "next":
+					var next:Bitmap = new Bitmap(new NextBtn());
+					sprite.addChild(next);
+					break;
+				case "prev":
+					var prev:Bitmap = new Bitmap(new PrevBtn());
+					sprite.addChild(prev);
 					break;
 			}
 			
