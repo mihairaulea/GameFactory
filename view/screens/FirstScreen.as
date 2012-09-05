@@ -42,6 +42,11 @@ package view.screens
 			}	
 		}
 		
+		override public function resizeElements(sizeX:Number, sizeY:Number)
+		{
+			backgroundDisplay.resize(sizeX, sizeY);
+		}		
+		
 		private function levelBrowserClick(e:Event)
 		{
 			trace("level browser click!");
@@ -76,12 +81,7 @@ package view.screens
 			addChildAt(backgroundDisplay, 0);
 		}
 		
-		//} endregion
-		
-		public function resizeElements(w:Number, h:Number)
-		{
-			backgroundDisplay.resize(w, h);
-		}		
+		//} endregion		
 		
 	}
 

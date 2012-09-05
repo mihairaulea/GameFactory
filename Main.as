@@ -18,14 +18,15 @@ package
 		public function Main()
 		{
 			loaderInfo.addEventListener(Event.COMPLETE, onCompleteInfo);
-			trace("main!");
 		}
 		
 		private function onCompleteInfo(e:Event)
 		{
-			trace("complete");
-			currWidth = loaderInfo.height;
-			currHeight = loaderInfo.width;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
+			
+			currWidth = loaderInfo.width;
+			currHeight = loaderInfo.height;
 			setView();
 			viewInst.resizeElements(currWidth, currHeight);
 			stage.addEventListener(Event.RESIZE, resizeHandler);

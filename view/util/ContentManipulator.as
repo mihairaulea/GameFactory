@@ -62,9 +62,9 @@ package view.util
 		
 		
 		
-		public function resize(syzeX:Number, syzeY:Number)
+		public function resize(sizeX:Number, sizeY:Number)
 		{
-			
+			contentPointer.resizeElements(sizeX, sizeY);
 		}
 		
 	}
