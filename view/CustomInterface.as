@@ -14,6 +14,7 @@
 		
 		//Mod: web - 0 /mobile portrait - 1 /mobile landscape - 2 
 		var deviceMode:int = 0;
+		private var resizeInit:Boolean = false;
 		
 		//Event variables
 		public static var BUTTON_TRIGGER:String = "buttonTrigger";
@@ -26,6 +27,36 @@
 		public function init()
 		{
 			
+		}
+		
+		public function resize(sizeX, sizeY)
+		{
+			if (resizeInit == false)
+			{
+				for each(var btn:ButtonDisplay in buttonArray)
+				{
+					btn.posX = btn.x / sizeX;
+					btn.posY = btn.y / sizeY;
+				}
+				for each(var notif:NotificationDisplay in notifArray)
+				{
+					notif.posX = notif.x / sizeX;
+					notif.posY = notif.y / sizeY;
+				}
+				
+				resizeInit = true;
+			}
+			
+			for each(var btn:ButtonDisplay in buttonArray)
+			{	
+				btn.x = sizeX * btn.posX;
+				btn.y = sizeY * btn.posY;
+			}
+			for each(var notif:NotificationDisplay in notifArray)
+			{
+				notif.x = sizeX * notif.posX;
+				notif.y = sizeY * notif.posY;
+			}
 		}
 		
 		//{ region Buttons

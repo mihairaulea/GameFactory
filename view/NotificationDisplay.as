@@ -12,6 +12,9 @@ package view
 	public class NotificationDisplay extends Sprite
 	{
 		//General variables
+		public var posX:Number = -1;
+		public var posY:Number = -1;
+		
 		var active:Boolean = false;
 		var tmplDisplay:Sprite;
 		var textField:TextField;

@@ -47,6 +47,13 @@ package view.screens
 				levelBrowserDisplay.reset();
 		}
 		
+		override public function resizeElements(sizeX:Number, sizeY:Number)
+		{
+			backgroundDisplay.resize(sizeX, sizeY);
+			levelBrowserInterface.resize(sizeX, sizeY);
+			//levelBrowserDisplay.resize(sizeX, sizeY);
+		}
+		
 		private function mainClick(e:Event)
 		{
 			super.requestContent(0, new Object());

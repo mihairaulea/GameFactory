@@ -14,6 +14,9 @@ package view
 	public class ButtonDisplay extends Sprite
 	{
 		//General variables
+		public var posX:Number = -1;
+		public var posY:Number = -1;
+		
 		var ratio:int = 0;
 		var isActive:Boolean;
 		var isHightligh:Boolean;

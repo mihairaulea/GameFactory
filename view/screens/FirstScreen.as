@@ -45,6 +45,7 @@ package view.screens
 		override public function resizeElements(sizeX:Number, sizeY:Number)
 		{
 			backgroundDisplay.resize(sizeX, sizeY);
+			firstScreenInterface.resize(sizeX, sizeY);
 		}		
 		
 		private function levelBrowserClick(e:Event)
