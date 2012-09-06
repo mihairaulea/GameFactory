@@ -14,6 +14,7 @@ package view.screens
 		
 		private var backgroundInterface:BackgroundInterface = new BackgroundInterface();
 		private var firstScreenInterface:CustomInterface = new CustomInterface();
+		private var panelInterface:PanelInterface = new PanelInterface();
 		
 		private var hasBeenInit:Boolean = false;
 		
@@ -28,6 +29,7 @@ package view.screens
 			{
 				addBackground(1);
 				addChild(firstScreenInterface);
+				addChild(panelInterface);
 				
 				//Buttons
 				firstScreenInterface.addBtn("Text", "Play", 400, 240, Filters.addOutline(0x4A8109), null, levelBrowserClick);
@@ -72,7 +74,7 @@ package view.screens
 		
 		private function aboutClick(e:Event)
 		{
-			trace("about click!");
+			panelInterface.addCreditsPanel(["Mihai Raulea", "Raluca Borangic"], ["Programmer", "Graphic design"], ["mihai.raulea@geekvillage.eu", "spiraluca@yahoo.com"], 400, 100, null, 25);
 		}
 		
 		//{ region Backgrounds

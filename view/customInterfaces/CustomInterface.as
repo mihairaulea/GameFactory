@@ -102,7 +102,7 @@
 		
 		//{ region Notifications
 		
-		public function addNotif(text:String = "Notification", posX:int = 0, posY:int = 0, sizeX:int = 120, sizeY:int = 35, active:Boolean = false, glow:GlowFilter = null, shadow:DropShadowFilter = null, gradientArray:Array = null)
+		public function addNotif(text:String = "Notification", posX:int = 0, posY:int = 0, sizeX:int = 120, sizeY:int = 35, active:Boolean = false, glow:GlowFilter = null, shadow:DropShadowFilter = null, gradientArray:Array = null, textSize:int = 20, font:String = "HoboStd")
 		{
 			var notif:NotificationDisplay = new NotificationDisplay();
 			notif.init(text, sizeX, sizeY, active, glow, shadow, gradientArray);

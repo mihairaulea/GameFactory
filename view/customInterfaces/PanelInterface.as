@@ -1,5 +1,8 @@
 package view.customInterfaces 
 {
+	import flash.events.Event;
+	import view.panels.CreditsPanel;
+	import flash.display.*;
 	
 	
 	public class PanelInterface extends Sprite
@@ -28,22 +31,29 @@ package view.customInterfaces
 			//
 		}
 		
-		public function addCreditsPanel()
+		public function addCreditsPanel(nameArray:Array, positionArray:Array, contactArray:Array = null, posX:int = 0, posY:int = 0, background:Sprite = null , separation:int = 40)
 		{
 			if (creditsInit == false)
 			{
+				var creditsPanel:CreditsPanel = new CreditsPanel();
+				creditsPanel.x = posX;
+				creditsPanel.y = posY;
+				creditsPanel.addEventListener(CreditsPanel.REMOVE_CREDITS, removeCreditsPanel);
+				addChild(creditsPanel);
 				
+				creditsPanel.init(nameArray, positionArray, contactArray, background, separation);
+				panelsArray["Credits"] = creditsPanel;
 				creditsInit = true;
 			}
 			else
 			{
-				
+				panelsArray["Credits"].visible = true;
 			}
 		}
 		
-		public function removeCreditsPanel()
+		public function removeCreditsPanel(e:Event)
 		{
-			
+			panelsArray["Credits"].visible = false;
 		}
 		
 		public function addAboutPanel()
@@ -86,7 +96,7 @@ package view.customInterfaces
 			
 		}
 		
-		public function resize(size X:int, sizeY:int)
+		public function resize(sizeX:int, sizeY:int)
 		{
 			
 		}

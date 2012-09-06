@@ -165,6 +165,7 @@ package view.customInterfaces
 			currPage = 0;
 			selectedLevel = -1;
 			levelDisplayInterface.buttonArray[0].visible = false;
+			levelDisplayInterface.buttonArray[1].visible = true;
 			for each(var lvlSel:LevelSelDisplay in pagesArray[0])
 				lvlSel.visible = true;
 			for (var i:int = 1; i < pageNum; i++)

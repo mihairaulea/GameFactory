@@ -4,7 +4,8 @@ package view.factories
 	import flash.geom.Matrix;
 	import flash.text.*;
 	import flash.filters.*;
-	
+	import flash.utils.getDefinitionByName;
+
 	public class NotificationFactory extends Sprite
 	{
 		
@@ -44,10 +45,10 @@ package view.factories
 			return sprite;
 		}
 		
-		public function createText(text:String = "Notification", glow:GlowFilter = null, shadow:DropShadowFilter = null):TextField
+		public function createText(text:String = "Notification", glow:GlowFilter = null, shadow:DropShadowFilter = null, textSize:int = 20, font:String = "HoboStd"):TextField
 		{
-			var textSize:int = 20;
-			var textFont:Font = new HoboStd(); 
+			var fontClass:Class = Class(getDefinitionByName(font));
+			var textFont:Font = new fontClass(); 
 			var textColor:Object = 0xFFFFFF;
 			var bold:Boolean = false;
 			var underlined:Boolean = false;

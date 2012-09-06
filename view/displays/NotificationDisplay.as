@@ -30,7 +30,7 @@ package view.displays
 			
 		}
 		
-		public function init(text:String = "Notification", sizeX:int = 120, sizeY:int = 35, active:Boolean = false, glow:GlowFilter = null, shadow:DropShadowFilter = null, gradientArray:Array = null)
+		public function init(text:String = "Notification", sizeX:int = 120, sizeY:int = 35, active:Boolean = false, glow:GlowFilter = null, shadow:DropShadowFilter = null, gradientArray:Array = null, textSize:int = 20, font:String = "HoboStd")
 		{
 			if (active == true)
 				addEventListener(MouseEvent.CLICK, clickHandler);
@@ -42,7 +42,7 @@ package view.displays
 			else
 				addGradientTmpl(sizeX, sizeY, gradientArray);
 				
-			addText(text, glow, shadow);
+			addText(text, glow, shadow, textSize, font);
 		}
 		
 		public function deinit()
@@ -68,9 +68,9 @@ package view.displays
 			addChild(tmplDisplay);
 		}
 		
-		private function addText(text:String = "Notification", glow:GlowFilter = null, shadow:DropShadowFilter = null)
+		private function addText(text:String = "Notification", glow:GlowFilter = null, shadow:DropShadowFilter = null, textSize:int = 20, font:String = "HoboStd")
 		{
-			textField = notifFactory.createText(text, glow, shadow);
+			textField = notifFactory.createText(text, glow, shadow, textSize, font);
 			textField.x = - textField.width / 2;
 			textField.y = - textField.height / 2;
 			addChild(textField);
