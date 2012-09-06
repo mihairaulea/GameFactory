@@ -4,18 +4,16 @@ package view.screens
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import view.CustomInterface;
-	import view.LevelBrowserDisplay;
-	import view.LevelSelDisplay;
+	import view.displays.LevelSelDisplay;
 	import view.util.ContentRequester;
-	import view.BackgroundDisplay;
+	import view.customInterfaces.*;
 	
 	public class LevelBrowser extends ContentRequester
 	{
 		
-		private var levelBrowserInterface:CustomInterface = new CustomInterface();
-		private var backgroundDisplay:BackgroundDisplay = new BackgroundDisplay();
-		private var levelBrowserDisplay:LevelBrowserDisplay = new LevelBrowserDisplay();
+		private var screenInterface:CustomInterface = new CustomInterface();
+		private var backgroundInterface:BackgroundInterface = new BackgroundInterface();
+		private var levelBrowserInterface:LevelBrowserInterface = new LevelBrowserInterface();
 		
 		private var hasBeenInit:Boolean = false;
 		
@@ -28,30 +26,30 @@ package view.screens
 		{
 			if (hasBeenInit == false)
 			{
-			addBackground();
+			addBackground(1);
+			addChild(screenInterface);
 			addChild(levelBrowserInterface);
-			addChild(levelBrowserDisplay);
 			
 			
 			//Buttons
-			levelBrowserInterface.addBtn(3, "back", 26, 402, null, null, mainClick);
+			screenInterface.addBtn("SquareGreen", "Back", 26, 402, null, null, mainClick);
 			
 			
 			//LevelBrowser
-			levelBrowserDisplay.addEventListener(LevelBrowserDisplay.LEVEL_SELECT, levelSelectHandler);
-			levelBrowserDisplay.init(90, 120);
+			levelBrowserInterface.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
+			levelBrowserInterface.init(90, 120);
 			
 			hasBeenInit = true;
 			}
 			else
-				levelBrowserDisplay.reset();
+				levelBrowserInterface.reset();
 		}
 		
 		override public function resizeElements(sizeX:Number, sizeY:Number)
 		{
-			backgroundDisplay.resize(sizeX, sizeY);
+			backgroundInterface.resize(sizeX, sizeY);
+			screenInterface.resize(sizeX, sizeY);
 			levelBrowserInterface.resize(sizeX, sizeY);
-			levelBrowserDisplay.resize(sizeX, sizeY);
 		}
 		
 		private function mainClick(e:Event)
@@ -59,15 +57,15 @@ package view.screens
 			super.requestContent(0, new Object());
 		}
 		
-		public function addBackground()
+		public function addBackground(nr:int)
 		{
-			backgroundDisplay.addBackground();
-			addChildAt(backgroundDisplay, 0);
+			backgroundInterface.addBackground(nr);
+			addChildAt(backgroundInterface, 0);
 		}
 		
 		private function levelSelectHandler(e:Event)
 		{
-			trace("Level selected" + LevelBrowserDisplay(e.target).selectedLevel);
+			trace("Level selected" + LevelBrowserInterface(e.target).selectedLevel);
 		}
 	}
 

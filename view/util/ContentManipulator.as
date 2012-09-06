@@ -36,8 +36,8 @@ package view.util
 			
 			for (var i:int = 0; i < contentArray.length; i++)
 			{
-				addChild(contentArray[i]);
 				contentArray[i].visible = false;
+				addChild(contentArray[i]);
 			}
 			
 			contentPointer = firstScreen;
@@ -58,10 +58,8 @@ package view.util
 		{
 			trace("new content requested!!!");
 			oldContentPointer = contentPointer;
-			//removeChild(oldContentPointer);
 			oldContentPointer.visible = false;
 			contentPointer = contentArray[ContentRequester(e.target).contentToRequestId];			
-			//addChild(contentPointer);
 			contentPointer.visible = true;
 			contentPointer.init(ContentRequester(e.target).dataObject);
 		}

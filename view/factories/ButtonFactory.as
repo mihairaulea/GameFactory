@@ -5,8 +5,9 @@
 	import flash.filters.DropShadowFilter;
 	import flash.filters.GlowFilter;
 	import flash.text.*;
+	import flash.utils.getDefinitionByName;
 	
-	public class ButtonFactory extends AbFactory
+	public class ButtonFactory extends Sprite
 	{	
 		public function ButtonFactory() 
 		{
@@ -20,27 +21,19 @@
 		 * 2 - circle blue template
 		 * 3 - square green template
 		 */
-		public function createTmpl(type:int):Sprite
+		public function createTmpl(tmpl:String):Sprite
 		{
 			var sprite:Sprite = new Sprite();
-			switch(type)
+			
+			if (tmpl != "Blank")
 			{
-				case 0:
-					var tmplBigBtn:Bitmap = new Bitmap(new TemplateBigBtn());
-					sprite.addChild(tmplBigBtn);
-					break;
-				case 1:
-					var tmplCircleBtn:Bitmap = new Bitmap(new TemplateCircleBtn());
-					sprite.addChild(tmplCircleBtn);
-					break;
-				case 2:
-					var tmplCicleBlueBtn:Bitmap = new Bitmap(new TemplateCircleBlueBtn());
-					sprite.addChild(tmplCicleBlueBtn);
-					break;
-				case 3:
-					var tmplSquareBtn:Bitmap = new Bitmap(new TemplateSquareBtn());
-					sprite.addChild(tmplSquareBtn);
-					break;
+				var tmplClass:Class = Class(getDefinitionByName("Tmpl" + tmpl));
+				var tmplBm:Bitmap = new Bitmap(new tmplClass());
+				sprite.addChild(tmplBm);
+			}
+			else
+			{
+				//Adauga un sprite invizibil pentru clickabilitate?
 			}
 			
 			return sprite;
@@ -49,42 +42,18 @@
 		public function createSymb(symb:String):Sprite
 		{
 			var sprite:Sprite = new Sprite();
-			switch(symb)
+			
+			if (symb != "Blank")
 			{
-				case "about":
-					var about:Bitmap = new Bitmap(new AboutBtn());
-					sprite.addChild(about);
-					break;
-				case "help":
-					var help:Bitmap = new Bitmap(new HelpBtn());
-					sprite.addChild(help);
-					break;
-				case "menu":
-					var menu:Bitmap = new Bitmap(new MenuBtn());
-					sprite.addChild(menu);
-					break;
-				case "setup":
-					var setup:Bitmap = new Bitmap(new SetupBtn());
-					sprite.addChild(setup);
-					break;
-				case "back":
-					var back:Bitmap = new Bitmap(new BackBtn());
-					sprite.addChild(back);
-					break;
-				case "next":
-					var next:Bitmap = new Bitmap(new NextBtn());
-					sprite.addChild(next);
-					break;
-				case "prev":
-					var prev:Bitmap = new Bitmap(new PrevBtn());
-					sprite.addChild(prev);
-					break;
+				var symbClass:Class = Class(getDefinitionByName("Symb" + symb));
+				var symbBm:Bitmap = new Bitmap(new symbClass());
+				sprite.addChild(symbBm);
 			}
 			
 			return sprite;
 		}
 		
-		public function createText(text:String = "menu", glow:GlowFilter = null, shadow:DropShadowFilter = null):TextField
+		public function createText(text:String = "Menu", glow:GlowFilter = null, shadow:DropShadowFilter = null):TextField
 		{
 			var textSize:int = 35;
 			var textFont:Font = new HoboStd(); 

@@ -4,9 +4,8 @@ package view.factories
 	import flash.geom.Matrix;
 	import flash.text.*;
 	import flash.filters.*;
-
 	
-	public class NotificationFactory extends AbFactory
+	public class NotificationFactory extends Sprite
 	{
 		
 		public function NotificationFactory() 
@@ -28,17 +27,16 @@ package view.factories
 			return sprite;
 		}
 		
-		//de testat
-		public function createTmplGradient(syzeX:int, syzeY:int):Sprite
+		public function createTmplGradient(syzeX:int, syzeY:int, gradientArray:Array):Sprite
 		{
 			var sprite:Sprite = new Sprite();
 			
 			var roundRect:Shape = new Shape();
 			var matrix:Matrix = new Matrix();
-			matrix.createGradientBox(syzeX, syzeY, 0, 0, 0);
+			matrix.createGradientBox(syzeX, syzeY,toRad(-90), 0, 0);
 
 			roundRect.graphics.lineStyle(0, 0x000000, 0);
-			roundRect.graphics.beginGradientFill(GradientType.LINEAR, [0x000000, 0xFFFFFF], [1, 1], [0, 255], matrix);
+			roundRect.graphics.beginGradientFill(GradientType.LINEAR, gradientArray, [1, 1], [0, 255], matrix);
 			roundRect.graphics.drawRoundRect(0, 0, syzeX, syzeY, 10, 10);
 			roundRect.graphics.endFill();
 			
@@ -75,6 +73,12 @@ package view.factories
 			textField.text = text;
 			return textField;
 		}
+		
+		function toRad(a:Number):Number {
+			return a*Math.PI/180;
+		}
+		
+		
 	}
 
 }
