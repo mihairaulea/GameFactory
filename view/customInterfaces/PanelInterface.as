@@ -58,12 +58,20 @@ package view.customInterfaces
 		
 		public function addAboutPanel()
 		{
-			
+			if (aboutInit == false)
+			{
+				
+				aboutInit = true;
+			}
+			else
+			{
+				panelsArray["About"].visible = true;
+			}
 		}
 		
 		public function removeAboutPanel()
 		{
-			
+			panelsArray["About"].visible = false;
 		}
 		
 		public function addSettingsPanel()

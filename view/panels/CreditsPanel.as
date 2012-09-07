@@ -8,7 +8,6 @@ package view.panels
 	{
 		
 		private var customInterface:CustomInterface = new CustomInterface();
-		
 		public static var REMOVE_CREDITS:String = "removeCredits";
 		
 		public function CreditsPanel() 
