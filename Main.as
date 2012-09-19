@@ -11,9 +11,11 @@ package
 	
 	public class Main extends MovieClip
 	{
-		var viewInst:View = new View();//CustomInterface = new CustomInterface();
+		var viewInst:View = new View();
 		var currWidth:int = 800;
 		var currHeight:int = 480;
+		
+		public static const MOD = "panorama";
 		
 		public function Main()
 		{
@@ -28,7 +30,6 @@ package
 			currWidth = loaderInfo.width;
 			currHeight = loaderInfo.height;
 			setView();
-			viewInst.resizeElements(currWidth, currHeight);
 			stage.addEventListener(Event.RESIZE, resizeHandler);
 		}
 		
@@ -41,8 +42,14 @@ package
 		
 		private function setView()
 		{
+			//Rotatie
+			if (currWidth < currHeight && MOD == "panorama" || (currWidth > currHeight && Main.MOD == "portrait"))
+			{
+				viewInst.rotation = -90;
+				viewInst.y = currHeight;
+			}
 			addChild(viewInst);
-			viewInst.initView();
+			viewInst.initView(currWidth,currHeight);
 		}
 		
 		private function buttonTriggerHandler(e:Event)

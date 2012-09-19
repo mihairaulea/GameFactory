@@ -15,9 +15,9 @@ package view
 			
 		}
 		
-		public function initView()
+		public function initView(sizeX:Number = 800, sizeY:Number = 400)
 		{
-			contentManipulator.init();
+			contentManipulator.init(sizeX,sizeY);
 			addChild(contentManipulator);
 		}
 		

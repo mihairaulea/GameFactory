@@ -7,8 +7,9 @@ package view.screens
 	import view.util.ContentRequester;
 	import view.util.Filters;
 	import view.customInterfaces.*;
+	import view.util.IResizableElement;
 	
-	public class FirstScreen extends ContentRequester
+	public class FirstScreen extends ContentRequester implements IResizableElement
 	{
 		
 		
@@ -17,6 +18,8 @@ package view.screens
 		private var panelInterface:PanelInterface = new PanelInterface();
 		
 		private var hasBeenInit:Boolean = false;
+		
+		
 		
 		public function FirstScreen() 
 		{
@@ -27,19 +30,9 @@ package view.screens
 		{
 			if (hasBeenInit == false)
 			{
-				addBackground(1);
+				//addBackground(1);
 				addChild(firstScreenInterface);
-				addChild(panelInterface);
-				
-				//Buttons
-				firstScreenInterface.addBtn("Text", "Play", 400, 240, Filters.addOutline(0x4A8109), null, levelBrowserClick);
-				firstScreenInterface.addBtn("CircleGreen", "Setup", 209, 381, null, null, setupClick); 
-				firstScreenInterface.addBtn("CircleGreen", "Menu", 312, 381, null, null, menuClick);
-				firstScreenInterface.addBtn("CircleGreen", "Help", 415, 381, null, null, helpClick);
-				firstScreenInterface.addBtn("CircleGreen", "About", 518, 381, null, null, aboutClick);
-				
-				//Notif
-				firstScreenInterface.addNotif("Player1", 400, 310, 165, 40, false, null, Filters.addShadow(0x62227F));
+				//addChild(panelInterface);
 				
 				hasBeenInit = true;
 			}	
@@ -47,8 +40,9 @@ package view.screens
 		
 		override public function resizeElements(sizeX:Number, sizeY:Number)
 		{
-			backgroundInterface.resize(sizeX, sizeY);
-			firstScreenInterface.resize(sizeX, sizeY);
+			//backgroundInterface.resize(sizeX, sizeY);
+			//firstScreenInterface.resize(sizeX, sizeY);
+			centerElements(sizeX, sizeY);
 		}		
 		
 		private function levelBrowserClick(e:Event)
@@ -85,7 +79,66 @@ package view.screens
 			addChildAt(backgroundInterface, 0);
 		}
 		
-		//} endregion		
+		//} endregion
+		
+		//{ region ResizableElement
+		
+		//ToDo later!
+		public function resizeElementsLarge()
+		{
+			//large buttons
+		}
+		
+		public function placeElementsSmall()
+		{
+			trace("Small");
+			//Buttons
+			firstScreenInterface.addBtn("Text", "Play", 41, 0, Filters.addOutline(0x4A8109), null, levelBrowserClick);
+			firstScreenInterface.addBtn("CircleGreen", "Setup", 0, 150, null, null, setupClick); 
+			firstScreenInterface.addBtn("CircleGreen", "Menu", 60, 150, null, null, menuClick);
+			firstScreenInterface.addBtn("CircleGreen", "Help", 120, 150, null, null, helpClick);
+			firstScreenInterface.addBtn("CircleGreen", "About", 180, 150, null, null, aboutClick);
+			
+			//Notif
+			firstScreenInterface.addNotif("Player1", 45, 90, 165, 40, false, null, Filters.addShadow(0x62227F));
+		}
+		
+		//Astai bun
+		public function placeElementsMedium()
+		{
+			trace("Medium");
+			//Buttons
+			firstScreenInterface.addBtn("Text", "Play", 81, 0, Filters.addOutline(0x4A8109), null, levelBrowserClick);
+			firstScreenInterface.addBtn("CircleGreen", "Setup", 0, 215, null, null, setupClick); 
+			firstScreenInterface.addBtn("CircleGreen", "Menu", 90, 215, null, null, menuClick);
+			firstScreenInterface.addBtn("CircleGreen", "Help", 180, 215, null, null, helpClick);
+			firstScreenInterface.addBtn("CircleGreen", "About", 270, 215, null, null, aboutClick);
+			
+			//Notif
+			firstScreenInterface.addNotif("Player1", 85, 90, 165, 40, false, null, Filters.addShadow(0x62227F));
+		}
+		
+		public function placeElementsLarge()
+		{
+			trace("Large");
+			//Buttons
+			firstScreenInterface.addBtn("Text", "Play", 81, 0, Filters.addOutline(0x4A8109), null, levelBrowserClick);
+			firstScreenInterface.addBtn("CircleGreen", "Setup", 0, 215, null, null, setupClick); 
+			firstScreenInterface.addBtn("CircleGreen", "Menu", 90, 215, null, null, menuClick);
+			firstScreenInterface.addBtn("CircleGreen", "Help", 180, 215, null, null, helpClick);
+			firstScreenInterface.addBtn("CircleGreen", "About", 270, 215, null, null, aboutClick);
+			
+			//Notif
+			firstScreenInterface.addNotif("Player1", 85, 90, 165, 40, false, null, Filters.addShadow(0x62227F));
+		}
+		
+		public function centerElements(sizeX:int,sizeY:int)
+		{
+			firstScreenInterface.x = (sizeX  - firstScreenInterface.width) / 2;
+			firstScreenInterface.y = (sizeY - firstScreenInterface.height) / 2;
+		}
+		
+		//} endregion
 		
 	}
 

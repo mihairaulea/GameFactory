@@ -34,10 +34,9 @@ package view.util
 			dispatchEvent(new Event(ContentRequester.REQUEST_NEW_CONTENT));
 		}
 		
-		public function resizeElements(syzeX:Number, syzeY:Number)
-		{
-			
+		//To be removed
+		public function resizeElements(syzeX:Number, syzeY:Number) { }
+		
 		}
-	}
 
 }

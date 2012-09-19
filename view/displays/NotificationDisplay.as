@@ -55,24 +55,24 @@ package view.displays
 		private function addTmpl(sizeX:int, sizeY:int)
 		{
 			tmplDisplay = notifFactory.createTmpl(sizeX, sizeY);
-			tmplDisplay.x = -tmplDisplay.width / 2;
-			tmplDisplay.y = -tmplDisplay.height / 2;
+			//tmplDisplay.x = -tmplDisplay.width / 2;
+			//tmplDisplay.y = -tmplDisplay.height / 2;
 			addChild(tmplDisplay);
 		}
 		
 		private function addGradientTmpl(sizeX:int, sizeY:int, gradientArray:Array)
 		{
 			tmplDisplay = notifFactory.createTmplGradient(sizeX, sizeY, gradientArray);
-			tmplDisplay.x = -tmplDisplay.width / 2;
-			tmplDisplay.y = -tmplDisplay.height / 2;
+			//tmplDisplay.x = -tmplDisplay.width / 2;
+			//tmplDisplay.y = -tmplDisplay.height / 2;
 			addChild(tmplDisplay);
 		}
 		
 		private function addText(text:String = "Notification", glow:GlowFilter = null, shadow:DropShadowFilter = null, textSize:int = 20, font:String = "HoboStd")
 		{
 			textField = notifFactory.createText(text, glow, shadow, textSize, font);
-			textField.x = - textField.width / 2;
-			textField.y = - textField.height / 2;
+			textField.x =tmplDisplay.width / 2 - textField.width / 2;
+			textField.y =tmplDisplay.height / 2 - textField.height / 2;
 			addChild(textField);
 		}
 		

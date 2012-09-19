@@ -22,10 +22,31 @@ package view.util
 			
 		}
 		
-		public function init()
+		public function init(sizeX:Number,sizeY:Number)
 		{
+			placeContent(sizeX, sizeY);
 			setContent();
 			setEventListeners();
+		}
+		
+		private function placeContent(sizeX:Number, sizeY:Number)
+		{
+			//daca width < height trebuie rotit game-ul
+			if ((sizeX < sizeY && Main.MOD == "panorama") || (sizeX > sizeY && Main.MOD == "portrait"))
+			{
+				var t:int = sizeX;
+				sizeX = sizeY;
+				sizeY = t;
+			}
+			
+			if (sizeX <= 480)
+				firstScreen.placeElementsSmall();
+			else if (480 < sizeX < 700)
+				firstScreen.placeElementsMedium();
+			else
+				firstScreen.placeElementsLarge();
+				
+			firstScreen.centerElements(sizeX, sizeY);
 		}
 		
 		private function setContent()
