@@ -30,7 +30,28 @@ package view.screens
 			addChild(screenInterface);
 			addChild(levelBrowserInterface);
 			
+			hasBeenInit = true;
+			}
+			else
+				levelBrowserInterface.reset();
+		}
+		
+		
+		override public function resizeElements(sizeX:Number, sizeY:Number)
+		{
+			//backgroundInterface.resize(sizeX, sizeY);
+			//screenInterface.resize(sizeX, sizeY);
+			centerElements(sizeX, sizeY);
+		}
+		
+		
+		public function resizeElementsLarge()
+		{
 			
+		}
+		
+		public function placeElementsSmall()
+		{
 			//Buttons
 			screenInterface.addBtn("SquareGreen", "Back", 26, 402, null, null, mainClick);
 			
@@ -38,17 +59,35 @@ package view.screens
 			//LevelBrowser
 			levelBrowserInterface.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
 			levelBrowserInterface.init(90, 120);
-			
-			hasBeenInit = true;
-			}
-			else
-				levelBrowserInterface.reset();
 		}
 		
-		override public function resizeElements(sizeX:Number, sizeY:Number)
+		public function placeElementsMedium()
 		{
-			backgroundInterface.resize(sizeX, sizeY);
-			screenInterface.resize(sizeX, sizeY);
+			//Buttons
+			screenInterface.addBtn("SquareGreen", "Back", 26, 402, null, null, mainClick);
+			
+			
+			//LevelBrowser
+			levelBrowserInterface.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
+			levelBrowserInterface.init(90, 120);
+		}
+		
+		public function placeElementsLarge()
+		{
+			//Buttons
+			screenInterface.addBtn("SquareGreen", "Back", 26, 402, null, null, mainClick);
+			
+			
+			//LevelBrowser
+			levelBrowserInterface.addEventListener(LevelBrowserInterface.LEVEL_SELECT, levelSelectHandler);
+			levelBrowserInterface.init(90, 120);
+		}
+		
+		public function centerElements(sizeX:int, sizeY:int)
+		{
+			trace(levelBrowserInterface.width + "|" + levelBrowserInterface.height);
+			levelBrowserInterface.x = 0;
+			levelBrowserInterface.y = 0;
 			levelBrowserInterface.resize(sizeX, sizeY);
 		}
 		

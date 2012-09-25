@@ -40,13 +40,23 @@ package view.util
 			}
 			
 			if (sizeX <= 480)
+			{
 				firstScreen.placeElementsSmall();
+				levelBrowser.placeElementsSmall();
+			}
 			else if (480 < sizeX < 700)
+			{
 				firstScreen.placeElementsMedium();
+				levelBrowser.placeElementsSmall();
+			}
 			else
+			{
 				firstScreen.placeElementsLarge();
-				
+				levelBrowser.placeElementsLarge();
+			}
+			
 			firstScreen.centerElements(sizeX, sizeY);
+			levelBrowser.centerElements(sizeX, sizeY);
 		}
 		
 		private function setContent()

@@ -93,21 +93,11 @@ package view.customInterfaces
 		
 		public function resize(sizeX:Number, sizeY:Number)
 		{
-			if (resizeInit == false)
-			{
-				initW = sizeX;
-				initH = sizeY;
-			
-				resizeInit = true;
-			}
-			
-			var diffX:Number = sizeX - initW;
-			var diffY:Number = sizeY - initH;
-			
-			//this.x = diffX;
-			//this.y = diffY;
-			
-			levelDisplayInterface.resize(sizeX, sizeY);
+			width = 800;
+			height = 400;
+			var scale:Number = Math.min(sizeX / width, sizeY / height);
+			this.scaleX = scale;
+			this.scaleY = scale;
 		}
 		
 		private function createDefault():Sprite
