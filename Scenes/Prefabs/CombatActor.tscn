@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://divr01u8oy7bl"]
+
+[ext_resource type="Texture2D" uid="uid://cvsy06fp57eq2" path="res://Assets/Visuals/Characters/Knight.png" id="1_ld006"]
+[ext_resource type="Theme" uid="uid://1k7si7pwqicv" path="res://Resources/CombatTheme.tres" id="2_gvcwp"]
+
+[node name="CombatActor" type="CharacterBody2D"]
+metadata/_edit_lock_ = true
+
+[node name="CombatActorIntelligence" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 8)
+gizmo_extents = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+texture = ExtResource("1_ld006")
+
+[node name="Health" type="Label" parent="Marker2D"]
+offset_left = -17.0
+offset_top = -23.0
+offset_right = 18.0
+offset_bottom = -8.0
+theme = ExtResource("2_gvcwp")
+theme_override_colors/font_color = Color(0.701961, 0.215686, 0.278431, 1)
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
